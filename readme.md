@@ -7,9 +7,9 @@
 
 ### Instructions
 
-This project uses an Anaconda Virtual Environment
-The project's dependencies are listed under the requirements.txt file
-Use "$ conda create --name environment_name --file requirements.txt" to create virtual environment
+This project uses an Anaconda Virtual Environment.  
+The project's dependencies are listed under the requirements.txt file.    
+Use "$ conda create --name environment_name --file requirements.txt" to create virtual environment.    
 Use "$ conda activate environment_name" to run the virtual environment
 
 
