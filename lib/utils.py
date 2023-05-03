@@ -7,6 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 from .node2vec import *
+from .node2vec import Node2Vec
 from sklearn.cluster import DBSCAN
 from sklearn.manifold import TSNE
 
@@ -64,5 +65,6 @@ def cluster_plot(tsne, clusters):
     cluster_data['x'] = tsne[:, 0]
     cluster_data['y'] = tsne[:, 1]
     cluster_data['cluster'] = clusters
-    sns.scatterplot(data = cluster_data, x = 'x', y = 'y', hue='cluster')
+    plot = sns.scatterplot(data = cluster_data, x = 'x', y = 'y', hue='cluster')
+    plot.legend_.remove()
     plt.show()

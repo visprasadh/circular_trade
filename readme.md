@@ -3,7 +3,11 @@
 
 ### Team Members
 
-* Vishnuprasadh Kumaravelu (ID22RESCH11017) - <id22resch11017@iith.ac.in>
+* Sayan Dey - <cs22mtech02005@iith.ac.in>
+* Nilesh Shah - <cs22resch12001@iith.ac.in>
+* Soumya Banerjee - <cs22mtech12011@iith.ac.in>
+* Raj Vilas Ambedkar - <cs22mtech12008@iith.ac.in>
+* Vishnuprasadh Kumaravelu - <id22resch11017@iith.ac.in>
 
 ### Instructions
 
