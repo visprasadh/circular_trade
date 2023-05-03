@@ -1,7 +1,14 @@
 # Import libraries
 
 import pandas as pd
+import numpy as np
 import networkx as nx
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+from .node2vec import *
+from sklearn.cluster import DBSCAN
+from sklearn.manifold import TSNE
 
 # Utility functions
 
@@ -33,3 +40,29 @@ def create_undirected_graph(multi_graph):
         else:
             graph.add_edge(u, v, weight=w)
     return graph
+
+def generate_embeddings(graph):
+    # Generate embeddings using node2vec
+    node2vec = Node2Vec(graph, 64, 30, 200) 
+    # Embed nodes
+    model = node2vec.fit(window=10, min_count=1, batch_words=4)
+    embeddings = []
+    for node in list(graph.nodes()):
+        node_embedding = model.wv[f'{node}']
+        embeddings.append(node_embedding)
+    return np.array(embeddings)
+
+def dbs(embeddings, eps, min_samples):
+    # Reducing the number of dimensions
+    tsne = TSNE(n_components = 2, random_state = 0)
+    tsne_data = tsne.fit_transform(embeddings)
+    clustering = DBSCAN(eps=eps, min_samples=min_samples).fit(tsne_data)
+    return tsne_data, clustering.labels_
+
+def cluster_plot(tsne, clusters):
+    cluster_data = pd.DataFrame()
+    cluster_data['x'] = tsne[:, 0]
+    cluster_data['y'] = tsne[:, 1]
+    cluster_data['cluster'] = clusters
+    sns.scatterplot(data = cluster_data, x = 'x', y = 'y', hue='cluster')
+    plt.show()
